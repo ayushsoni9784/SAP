@@ -1,0 +1,226 @@
+Data Migration 
+It is the process of moving data from one location to another, one format to another, or one application to another. Generally, this is the result of introducing a new system or location for the data. 
+
+These days, data migrations are often started as firms move from on-premises infrastructure and applications to cloud-based storage and applications to optimize or transform their company.
+
+Data Migration is difficult and risky beacuase of data gravity.
+
+In brief data gravity is 
+How data attracts other data to it as it grows
+How data is integrated into a business
+How data becomes customized over time
+
+
+Types of Data Migration
+
+Storage migration
+The process of moving data off existing arrays into more modern ones that enable other systems to access it.
+
+Cloud migration
+The process of moving data, application, or other business elements from either an on-premises data center to a cloud or from one cloud to another.
+
+Application migration 
+The process of moving an application program from one environment to another. May include moving the entire application from an on-premises IT center to a cloud, moving between clouds, or simply moving the application's underlying data to a new form of the application hosted by a software provider.
+
+Data migration involves 3 basic steps:
+
+Extract data
+Transform data
+Load data
+
+Migrating SAP applications to Azure - part1
+
+A great SAP architecture on Azure starts with a solid foundation built on four pillars:
+
+Security
+Performance and scalability
+Availability and recoverability
+Efficiency and operations
+
+Designing for security
+
+Sap data is the terasure of the organization so we have to focus on securing access to SAP architecture by way of secure authentication, protecting your application and data from network vulnerabilities, and maintaining data integrity through encryption methods.
+
+SAP on azure is delivered in the Infrastructure-as-a-Service (IaaS) cloud model. 
+
+Security protections are built into the service by Microsoft at the physical datacenter, physical network, physical host level, and the hypervisor and areas above the OS like n/w control, application, identity and directory infrastructure, account and access management, client endpoints, data governance and rights management we have to ensure that we are providing the proper security controls for your architecture.
+
+In terms of securing our rest of layers we can use the azure services 
+1. For authentication - Azure Active directory ) to enable single-sign-on (SSO) to your S/4HANA Fiori Launchpad. Azure AD can also be integrated with the SAP Cloud Platform (SCP) to provide single-sign-on to your SCP services which can also be run on Azure.
+
+Azure Active Directory (Azure AD) is Microsoft’s cloud-based identity and access management service, which helps your employees sign in and access resources in:
+
+External resources, such as Microsoft Office 365, the Azure portal, and thousands of other SaaS applications.
+
+Internal resources, such as apps on your corporate network and intranet, along with any cloud apps developed by your own organization.
+
+2. For filtering the trafic -Network Security Groups (NSG) allow you to filter network traffic to and from resources in you virtual network. NSG rules can be defined to allow or deny access to your SAP services, for instance, allowing access to the SAP Application ports from on-premises IP addresses ranges and deny public Internet access.
+
+3. For data integrity - Azure Disk Encryption helps you encrypt your SAP virtual machine disks where both the operating system and data volumes can be encrypted at rest in storage. Azure Disk Encryption is integrated with Azure Key Vault which controls and manages your encryption keys. 
+
+
+Designing for performance and scalability
+
+Performance is the key factor for buisness processes. Azure provide the sizing options for the sap deployment.
+Azure allows SAP syatem with ease like increasing the compute capacity of the database server or sacling up the database server with increase in the demand so that downtime can reduce.
+
+For performance ad scalablity azure have virtual machine acceletors. 
+We can enable the accelerated networking to accelerate n/w performance.
+For SAP DB on M-series enable the write accelerator which write cache on your database log volumes to improve write I/O latency. Write Accelerator is mandatory for productive SAP HANA workloads to ensure a low write latency (sub ms) to the /hana/log volume.
+
+Express rute or VPN facilites connectivity for on-premises SAP end users and application interfaces connecting to SAP applications in Azure. 
+ExpressRoute for a private, dedicated connection which offers reliability, faster speed, lower latency, and tighter security. 
+Be mindful of latency sensitive interfaces between SAP and non-SAP applications, you may need to define migration “move groups” where groups of SAP applications and non-SAP applications are landed on Azure together.
+
+Designing for availability and recoverability
+
+Designing for availability ensures that SAP application uptime is secured in the event of localized software or hardware failures. In the case of productive SAP applications, we recommend the virtual machines which run the SAP single points of failure, such as the system central services A(SCS) and database are deployed in Availability Sets or Availability Zones, to protect against planned and unplanned maintenance events. This also applies to the SAP Application servers where a few smaller servers are recommended instead of one larger application server.
+
+Designing for recoverability means recovering from data loss, such as a logical error on the SAP database or from large scale disasters, or loss of a complete Azure region. When designing for recoverability, it is necessary to understand the Recovery Point Objective (RPO) and Recovery Time Objective (RTO) of your SAP Application. Azure Regional Pairs are recommended for disaster recovery which offer isolation and availability to hedge against the risks of natural or man disasters impacting a single region.
+
+On the DBMS layer, asynchronous replication can be used to replicate your production data from your primary region to your disaster recovery region. On the SAP application layer, Azure-to-Azure Site Recovery can be used as part of an efficient, cost-conscious disaster recovery solution.
+
+Designing operations and efficiency
+
+De-allocating or “snoozing” of virtual machines can bring you tremendous cost savings. For example, running your SAP Sandbox systems 10 hours x 5 days, instead of 24 hours x 7 days would reduce your costs by approximately 70 percent in a pay-as-you-go model. Where your SAP application needs to run 24 x 7 opt for Azure Reserved Instances to drive down your costs.
+
+Automated Deployment Gains
+Works out of box and requires very limited additional domain knowledge
+Requires manual effort like for 30 mins to 4 hrs only.
+Free 
+Templates include test instrumentation during deploymentand migration.
+A easy as building legos Scale up, down and out effortlessely.
+
+
+Migrating SAP applications to Azure - part2
+
+Journey to SAP S/4HANA from SAP Business Suite
+
+A common scenario where SAP customers can experience the speed and agility of the Azure platform is the ability to migrate from a SAP Business Suite running on-premises to SAP S/4HANA in the cloud. This scenario is a two-step process. The first step being migration from enterprise resource planning (ERP) on-premises to the Suite on HANA in Azure, and then converting from Suite on HANA to S/4HANA.
+
+When getting started with the actual execution, you would typically want to identify all the SAP prerequisites specific to the versions that are currently in use. Larger SAP migration projects will typically have a number of parallel efforts going on at the same time. 
+
+Prerequisites before the upgrade are running the readiness check looking at impact of the legacy custom code in the SAP Business Suite system, the S/4HANA sizing, and other S/4 perquisites required.
+
+Next is the infrastructure deployment on Azure. The initial deployment is minimal, just enough infrastructure to support the initial sandbox and development tiers. Requirements at this state include:
+
+An Azure subscription
+An established VPN connection or Express Route
+A deployed Azure network (VNets and Subnets) and security configurations (Network Security Groups)
+The required number of virtual or bare metal servers and associated storage
+
+The above requirements will comprise the new target environment. ExpressRoutre will be required  to provide enough bandwidth for migrating medium to large databases. The basis admins can start installing the Suite on HANA database and the initial application servers.
+
+When migrating SAP from on-premises to Azure, there are number of options including backup/restore, export/import, SUM and DMO, and more. When migrating the SAP Business Suite to S/4HANA on Azure, it’s easier to use the SUM and DMO option from SAP to handle the database migration and installing new application servers in Azure. This also provides an opportunity to have the new landscape in Azure on the latest supported operating system versions for optimal capabilities, performance, and support. 
+
+Things that must be check before the migration are
+Check the minimum required SAP versions and release levels across the landscape.
+Check the PAM for Java components to see if they are required for your S/4HANA deployment.
+Use the benchmark tool in DMO to get realistic migration times for the system. This helps with determining the best ExpressRoute sizing for the migration, and sets expectations for required downtimes.
+Know the Unicode requirement to upgrade to S/4HANA.
+Know the dual stack systems remediation.
+Know that OS flavor and versions might differ from existing internal IT standards.
+Plan for the Fiori deployment.
+Be prepared to perform multiple migration mock runs for complex or very large landscapes.
+
+Once the migration from the on-premises system to the Azure environment is complete, this is the completion of the step 1 i.e. on-premise to the suite on hana in azure.
+The conversion from the SAP Business Suite on HANA to S/4HANA can begin.
+
+Deploying a new S/4HANA landscape can all be done in Azure by the basis team and eliminates any dependencies on the many internal IT teams that would be required with a deployment in a traditional on-premises environment. Most customers will likely start with a simple sandbox or new development system from a system copy of the newly migrated suite on the HANA system. This provides a staging area to run through all the simplification checks, custom code migrations, and actual S/4 conversion mock runs. In parallel, the basis team can start deploying the QAS and production tiers including the new VM’s and configuration for Fiori. Once the necessary checks and conversion have been completed, the process is simply repeated for QAS and production.
+
+
+Database Migration Option - DMO 
+
+DMO in a nutshell 
+
+Scenario 
+1 You want to migrate your existing SAP system to SAP HANA database.
+2 You choose the inplace-migration option to aviod landscape changes(SID, hostname)and need an update of your system.
+Procedure is complex and requires several steps to be considered.
+
+Solution 
+Use the database migration option(DMO) of software Update manager(SUM)
+
+Benefits 
+Migration steps are simplifed
+System update and database migrations are conbined in one tool.
+Busisness downtime is reduced, Unicode migration will be included as well.
+Well known SUm is used with improved UI.
+
+
+
+SAP applications to Azure – part 3
+
+
+BW on HANA and BW/4HANA on Azure
+
+Why organisation switch to the SAP HANA to the cloud are driven by two factors 
+
+1. End of life first-generation SAP HANA appliances causing customers to re-evaluate their platform.
+
+2. The desire to take advantage of the early value proposition of SAP Business Warehouse (BW) on HANA in a flexible TDI model over traditional databases and later BW/4HANA.
+
+The SAP Database Migration Option (DMO) with System Move option of SUM, used as part of the migration allows customer the options to perform the migration in a single step, from source system on-premises, or to the target system residing in Microsoft Azure, minimizing overall downtime.
+
+This journey of on-premise to SAP BW4/HANA on azure is two step process same as the SAP HANA to SAP S/4 HANA on azure.
+
+Step one
+The first step is a migration of SAP BW on AnyDB to SAP BW on HANA, running in Microsoft Azure.
+
+Step two
+Once customers have SAP BW on HANA running in Azure, the real benefits of hyper-scale cloud flexibility start to be realized. Since the BW/4HANA migration exercise can be tested iteratively, if needed in parallel, while only paying for what is used, you can throw it away once you have the migration recipe perfected and are ready to execute against production.
+
+The SAP BW on HANA and BW/4HANA scenarios, running on Microsoft Azure, are enabled through a combination of IaaS services, such as:
+
+High-performing Azure Virtual Machines
+Azure Premium Storage
+Azure Accelerated Networking
+
+These highly flexible, performant virtual machines (VM) offer the ability for customers to quickly spin up SAP HANA workloads and deploy infrastructure for n+0 scale-out configurations. Additionally, Azure also offers customers the ability to scale OLAP workloads through the scale-out scenario on dedicated, purpose-built SAP HANA Large Instance hardware.
+
+In these HANA Large Instance configurations, customers would install SAP HANA in an “N+1” configuration, which usually means:
+
+1 master node
+N worker nodes
+1 standby node (optional)
+
+
+How the networking is setup on azure?
+
+In the HANA Large Instance scenario the use of dedicated, shared NFS storage and snapshots allows us the ability to scale-out with a standby-node. Ensuring availability for the BW system with minimal additional overhead.
+
+SAP HANA scale-out configurations using NFS require three distinct network zones, to isolate SAP HANA client traffic, SAP HANA intranode communication and SAP HANA storage communication (NFS) to ensure predictive performance.
+
+We need to follow SAP recommended TDI practices when designing for SAP HANA:
+
+Adequate and performant storage in proportion to the allocated RAM.
+Correct configuration of NFS shared storage to ensure proper failover operations in case of n+1 configuration with HANA Large Instances.
+Distinct network zones to isolate network traffic into client and intra-node zones.
+
+Storage of SAP HANA on azure
+
+SAP HANA Large Instance scale-out configurations in the TDI model use high-performant NFS shared storage to enable the standby node ability to take over a failed node.
+
+There is a minimum of four types of shared filesystems set up for SAP HANA installations in a TDI scale-out configuration of Azure HANA Large Instances:
+
+Shared Filesystem    Description
+
+/usr/sap/SID
+Low IO performance requirements
+
+/hana/shared/SID
+Low IO performance requirements
+
+/hana/data/SID/mnt0000*
+Medium / High IO performance requirements
+
+/hana/log/SID/mnt0000*
+Medium / High IO performance requirements
+
+
+There are more filesystem for scale-out operations.
+
+
+Azure HANA Large Instance units in HANA scale-out, where each unit has every other unit’s HANA filesystems provisioned, most critically the HANA and Log volumes, however at any point in time each unit has read/write control of its own data and log filesystems enforced by NFS v4 locking.
+
+In the event of a failure, the SAP HANA standby node can take over ownership of that node’s storage and assumes that nodes’ place in the operating scale-out HANA system.

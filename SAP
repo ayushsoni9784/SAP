@@ -1,0 +1,557 @@
+SAP
+SAP stands for Systems Applications and Products in Data Processing. SAP, by definition, is also the name of the ERP (Enterprise Resource Planning) software as well as the name of the company. SAP Software is a European multinational company.
+
+Why SAP?
+
+SAP -System Analysis Program Development
+Traditional business models often involve decentralized data management, with each business function storing data about its operations in a separate database. This means that employees from other business functions cannot access the information, and duplication of data across multiple departments increases IT storage costs and the risk of data errors.
+
+By centralizing data management, SAP software provides a single view of the truth that is used by multiple business functions. This helps companies better manage complex business processes involving different departments by giving employees access to real-time insights across the enterprise. As a result, businesses can accelerate workflows, improve operational efficiency, raise productivity, enhance customer experiences – and ultimately increase profits.
+
+
+
+SAP HANA 
+
+What is SAP HANA?
+SAP HANA is a latest hybrid in-memory database, and platform which can be deployed on-premises or cloud. SAP HANA is a combination of hardware and software, which integrates different components like SAP HANA Database, SAP SLT (System Landscape Transformation) Replication server, SAP HANA Direct Extractor connection, and Sybase replication.
+
+Features of SAP HANA 
+
+1 Immediate answers 
+2 Real-Time access
+3 Deeper insight
+4 Simpler and Better TCO - Manage large data lanscape with simplicity and efficiency
+5 Ablity to Handle Unstructured Data 
+6 Out of the box features for text analysis and data mining.
+
+Why to choose SAP HANA?
+
+Real Time – SAP HANA Provides Real-Time Data Provisioning and Realtime Reporting.
+
+Speed – SAP HANA provide high speeds processing on massive data due to In-Memory Technology.
+
+Any Data/Source- SAP HANA can access various data source including Structured and Un-Structured data from SAP or Non-SAP data source.
+
+Cloud- SAP HANA database and application can be deployed to the Cloud environment.
+
+Simplicity – SAP HANA reduce efforts behind ETL process, Data Aggregation, Indexing, and Mapping.
+
+Cost – SAP claims that SAP HANA Software can reduce Total IT cost of a company.
+
+Choice Option – SAP HANA is supported by different hardware vendor and Software provider, so based on the requirement, the user can choose the best option.
+
+Innovations of SAP HANA 
+
+Technology to process and analyze massive amountt of data in real time.
+
+In memory Storage 
+Multi core Architecture 
+Columnar Storage
+Partitioning
+Compression 
+Masive parallel processing
+
+
+In memory storage 
+This is the biggest innovation at hardware side of things.
+Hana store eveything on RAM it stores and process the data on RAM as the it is faster than the conventional method.
+Hana adds more the software acclerations which makes the data processing more faster.
+
+SAP HANA has many processes running on the SUSE Linux Server. SUSE Linux server manages the reservation of memory to all process.
+
+When SAP HANA starts up, Linux OS reserves memory for the program code, program stack, and static data. OS can dynamically reserve additional data memory upon request from the SAP HANA Server.
+
+SAP HANA create a memory pool for managing and tracking the consumption of memory. The memory pool is used to store all the in-memory data and system tables, thread stack, temporary computations and all other data structure required for managing the database.
+
+When more memory is required for table growth or temporary computations, the SAP HANA memorymanager obtains this from the pool.
+
+
+
+Compression 
+
+Minimizing the Data Movement through Compression.
+It reduce the data footprint by compressing the data.
+By compession means reduces the amount of data which is processed and reduces the data which moved in between engines.
+
+Columnar Storage 
+
+HANA supports both column based and row based but it use column based database.
+Cloumn based is faster for reading it goes through it much faster and enable us to do analytical and process in much faster way.
+
+
+Pushing applications logic to the database
+
+As HANA comes with in-built engines tohandle logic and execution code.
+Hana pushes the application logic data intensive logic from application layer to the database layer.
+
+Usually we put the application logic to the application layer but in this we push it to the database layer so it can process it faster and do it much more efficently this gives user a much more good experience.
+
+
+
+
+SAP HANA Database 
+ 
+
+SAP HANA Database is Main-Memory centric data management platform. SAP HANA Database runs on SUSE Linux Enterprises Server and builds on C++ Language.
+
+SAP HANA Database can be distributed to multiple machines.
+
+SAP HANA Advantages are as mentioned below -
+
+SAP HANA is useful as it's very fast due to all data loaded in-Memory and no need to load data from disk.
+SAP HANA can be used for the purpose of OLAP (On-line analytic) and OLTP (On-Line Transaction) on a single database.
+
+SAP HANA Database consists of a set of in-memory processing engines. Calculation engine is main in-memory Processing engines in SAP HANA. It works with other processing engine like Relational database Engine(Row and Column engine), OLAP Engine, etc.
+
+Relational database table resides in column or row store.
+
+There are two storage types for SAP HANA table.
+
+1. Row type storage (For Row Table).
+2. Column type storage (For Column Table).
+
+Text data and Graph data resides in Text Engine and Graph Engine respectively. There are some more engines in SAP HANA Database. The data is allowed to store in these engines as long as enough space is available.
+
+
+
+SAP HANA Landscape
+
+"HANA" mean High Performance Analytic Appliance is a combination of hardware and software platform.
+
+There are two types of Relational data stores in SAP HANA: Row Store and Column Store.
+
+Row Store-
+
+It is same as Traditional database e.g. (Oracle, SQL Server). The only difference is that all data is stored in row storage area in memory of SAP HANA, unlike a traditional database, where data is stored in Hard Drive.
+
+Column Store-
+
+Column store is the part of the SAP HANA database and manages data in columnar way in SAP HANA memory. Column tables are stored in Column store area. The Column store provides good performance for write operations and at the same time optimizes the read operation.
+
+
+Column Table consits of two storage
+1 Delta Storage
+2 Main Storage 
+
+The write operations are done only in delta storage.
+
+The read operations can be done from both delta as well as the main storage.
+
+
+Main Storage
+
+Main Storage contains the main part of data. In Main Storage, suitable data compression Method (Dictionary Encoding, Cluster Encoding, Sparse Encoding, Run Length encoding, etc.) is applied to compress data with the purpose to save memory and speed up searches.
+
+In main storage write operations on compressed data will be costly, so write operation do not directly modify compressed data in main storage. Instead, all changes are written in a separate area in column storage known as "Delta Storage."
+Delta storage is optimized for a write operation and uses normal compression. The write operations are not allowed on main storage but allowed on delta storage. Read operations are allowed on both storages.
+
+Delta Storage
+
+Delta storage is used for a write operation and uses basic compression. All uncommitted modification in Column table data stored in delta storage.
+
+
+Delta Merge Operation 
+
+The purpose of delta merge operation is to move changes, which is collected in delta storage to main storage.
+After performing Delta Merge operation on sap column table, the content of main storage is saved to disk and compression recalculated.
+
+
+Process of moving Data from Delta to Main Storage during delta merge
+
+There is a buffer store (L1-Delta) which is row storage. So in SAP HANA, column table acts like row store due to L1-delta.
+
+1. The user runs update / insert query on the table (Physical Operator is SQL statements.).
+
+2.Data first go to L1. When L1 moves data further (L1- Uncommitted data)
+
+3. Then data goes to L2-delta buffer, which is column oriented. (L2- Committed data)
+
+4. When L2-delta process is complete, data goes to Main storage.
+
+
+Installation of SAP HANA 
+
+First we have to create a virtual machine of suse linux.
+SAP HANA require atkleast 25 GB of RAMand 4 processors.
+
+EX- Base machine(windows machine)
+It have 32 GB of RAM and 1TB of HDD.
+
+on top of it we have installed the virual machine of suse linux 
+and config are 28 GB of RAM and 150 GB HDD.
+
+And then we install the HANA database in Suse linux.
+
+
+SAP HANA Software Components 
+
+Types of SAP
+
+1. SAP HANA Platform Edition 
+
+2. SAP HANA Enterprise Edition
+That comes with SLT, DS, DXC
+
+3. SAP HANA Real Time Data edition
+That comes with SLT, DS, DXC, IQ, RS, SQLA, ESP, PD.
+
+
+Mandatory components
+
+HANA Database
+HANA Client
+HANA Studio
+HANA Lifecycle Manager 
+Host Agent
+
+These are core components that are installed and configured by certified SAP HANA hardware partners.
+
+Optional server components
+
+HANA AFL/LCApps
+HANA RDL content package
+HANA INA Toolkit for HTML
+HANA EPM content package
+HANA SHINE content package 
+HANA smart data access
+HANA studio SAPUI5 plugin 
+HANA HW config check
+
+These can be optionally installed and can installed through HANA Lifecycle Manager from within SAP HANA studio.
+
+SAP HANA front-end 
+
+HANA client for Excel
+HANA information composer 
+
+These are front end and client components to work and connect to your SAP HANA system.
+
+
+SAP HANA Filesystem
+Two Main Directories
+
+1 /hana/
+2 /usr/sap
+
+inside /usr/sap
+
+System instance -- /usr/sap
+
+All the in-memory data is stored.
+
+The path to the local SAP system instance directories.
+
+Subdirectories:
+/usr/sap/hostctrl – The SAP host agent directory.
+
+/usr/sap/<SID> – Contains system executables (SYS) and the home directory (home) of the instance system administrator (<sid>adm) user.
+
+inside /hana
+
+Installation path(sapmnt)-- /hana/shared/
+The mount directory is used for shared files between all hosts in an SAP HANA system, and must be available to each of the servers in the SAP HANA cluster.
+
+Data volume -- /hana/data/<SID>
+
+The default path to the data directory depends on the system ID of the SAP HANA host.
+
+Log volume -- /hana/log/<SID> 
+
+The default path to the log directory depends on the system ID of the SAP HANA host.
+
+
+Users that are created during the installation
+
+1. <sid>adm 
+Starting, reccoveryt etc
+
+2 sapadm 
+sap host agent adninstartor
+
+3 SYSTEM  
+Super user inside the database 
+
+4 <sid>crypt 
+The user <sid>crypt owns the storage of the encryption keys and other similarly sensitive data.
+
+Installation of SAP HANA can be done by two ways
+1 Through GUI - HDBLCM GUI
+2 Through CLI - HDBLCM CLI 
+
+
+
+Installing the Hana (Steps are same in both cli and gui )
+
+Step-1 Select the Software Loacations
+In this step it will show the path of the components which we can install.
+
+Step-2 Select Activity 
+In this step we will select either we have to install the new system or use the existing system or resume the installation.
+
+Step-3 Select Components 
+In this we have to select the components which we want to install.
+In tutorial it selected the SAP HANA Database Client and SAP HANA Studio 
+
+Step-4 Configure 
+
+This is multistep process 
+
+Step-a Choose system type 
+Single or multi host system 
+
+step-b Define System Properties
+1 Local host name- automatically give by system 
+2 installation path - by default is /mnt/shared (from where we are installing the SAP HANA)
+3 SAP HANA System ID (sid) - Can give anyname (tutorial-HAC)
+4 Instance Number- Starts with 00 and so on 
+5 Database mode- Single conatiner 
+6 System Usage- custom other options are production, development etc choose according to the project phase.
+7 Restrict the memory to the database.
+
+Step-c Define Storage Properties
+Location of data volumes - /hana/data/<sid>
+Location of log volumes - /hana/log/<sid>
+
+Step-d Define certificate properties
+Leave as it is.
+
+Step-e Define System Adminstrator
+This step is for the creation of <sid>adm user.
+provide password and couple more information.
+
+Step-f Define the Database User 
+This step is for the creation of SYSTEM user i.e. for database 
+
+Step-g Define the sap host agent user
+This step is for the creation of the sapadm user.
+
+
+Step-4 Review and confirm 
+
+
+Some file location which are important
+
+/hana/shared/<sid>/hdblcm 
+in this folder there are files hdblcm, hdblcmgui, hdblcmweb which can be used to uninstall the database, install a specific component, update etc.
+
+/usr/sap/<sid>/<sid>00 
+ex- /usr/sap/HDB/HDB00 
+in this folder there are various file where the hdb commands are stored.
+
+To access these commands 
+su hdbadm 
+
+now cd to above directory 
+./HDB -help
+
+./HDB version
+
+
+One more way to install or update the SAP HANA 
+
+Batch Mode    
+It is done using command 
+./hdblcm --action=install --configfile=/path/to/config/file -b 
+
+the configuration file is the one in which all the parameters are passed to install the SAP HANA.
+
+
+Connecting the SAP HANA(SUSE linux) from windows server machine
+
+First we have to install the database and studio in windows as well 
+
+now we have to get ip of our linux server and we have to paste that ip in the windows machine hosts file
+
+C:\Windows\System32\drivers\etc\hosts  
+
+here we have to paste our linux ip 
+
+now we have to start a sap studio there start a new system in that we have to provide ip or hostname then we can authenticate through 2 ways we can use the authentication way by providing the database user name and password. 
+
+Installing a Multi Host System 
+
+A multiple-host system is a system with more than one host, which can be configured as active worker hosts or idle standby hosts. The server software is based on a flexiA multiple-host system is a system with more than one host, which can be configured as active worker hosts or idle standby hosts. The server software is based on a flexible architecture that enables a distributed installation. This means that load can be balanced between different hosts. The server software has to be installed in a shared file system. This file system has to be mounted by all hosts that are part of the system.ble architecture that enables a distributed installation. This means that load can be balanced between different hosts. The server software has to be installed in a shared file system. This file system has to be mounted by all hosts that are part of the system.
+
+so when we install the single host a host conatin a file /usr/shared/<sid>/<sid>00
+
+so if this a multi host then this directory structure will be in every host and all host will shared the shared file struture and all hosts are installed in that shared file structured only.
+
+And every host will have /hana/shared/<sid>/
+
+The server can be of two types or server roles can be of two types 
+1 Worker 
+  a. master
+  b. slave
+
+2 Standby 
+
+For example if there are three hosts and two are worker and in two worker one would be master and another would be slave and one is standby.
+
+Now the master is one which assign the metadata to the worker node.
+
+and if the one worker node goes down then the other one which is in standby would come to that place.
+
+And all these information is stored in a configuration program or table which have patition and host as table header and inside it the host name and partion as indexing is saved.
+
+
+Checking installation health and components
+To check if xsengine is working
+in browser
+hostname:80instanceid
+clone1:8002
+
+we also access the admin using webbrowser 
+clone1:8002/sap/hana/xs/admin
+
+
+How to update the database using HDBLCM GUI
+
+First we have to download the new version of the database and then inside the downloaded folder there will be an file named hdblcmgui.
+hdblcgui will automatically detect the already installed hana and we can select some options give the password and we can update it
+
+How to remove or install the additional components in hana?
+OPTION 1 is though token and token can be used in the browser and then gui will open and there we can remive and install.
+
+OPTION 2 is using the hana studio of the windows or remote machine and in that we can access the gui that is same as above.
+
+OPTION 3 is /hana/shared/<sid>/hdblcm 
+in this location there is an hdblcmgui, hdblcm from any method we can remove or install the component.
+
+SAP HANA Sizing 
+
+Sizing is a term which is used to determine hardware requirement for SAP HANA system, such as RAM, Hard Disk and CPU, etc.
+
+The main important sizing component is the Memory, and the second important sizing component is CPU. The third main component is a disk, but sizing is completely dependent on Memory and CPU.
+
+In SAP HANA implementation, one of the critical tasks is to determine the right size of a server according to business requirement.
+
+SAP HANA DB differ in sizing with normal DBMS in terms of –
+
+Main Memory Requirement for SAP HANA ( Memory sizing is determined by Metadata and Transaction data in SAP HANA)
+
+CPU Requirement for SAP HANA (Forecast CPU is Estimated not accurate).
+
+Disk Space Requirement for SAP HANA ( Is calculated for data persistence and for logging data) 
+
+For calculation we can use the methods:
+Sizing using ABAP report.
+Sizing using DB Script.
+Sizing using Quicksizer Tool.
+
+
+Single Application on One SAP HANA System (SCOS)
+A single application on one SAP HANA system is also known as Single Component on One System (SCOS).
+
+		   App X
+		    |  |
+		  Schema X
+		SAP HANA DB
+                    |  |
+		 OS and H/W
+		    |  |
+		  Storage
+
+
+Multiple Applications on One SAP HANA System (MCOD)
+Multiple applications on one SAP HANA system is also known as Multiple Components on One Database (MCOD).
+
+The technical deployment type MCOD refers to the scenario where more than one application, scenario, or component runs on one SAP HANA system. This deployment type is available, with restrictions, for production SAP HANA systems.
+
+
+
+              App X    App Y
+	       |  |     |  |
+            Schema X  Schema Y 
+		SAP HANA DB
+                    |  |
+		 OS and H/W
+		    |  |
+		  Storage
+
+	
+
+Multiple SAP HANA Systems on One Host (MCOS)
+SAP does support running multiple SAP HANA systems (SIDs) on a single production SAP HANA host. This is restricted to single-host / scale-up scenarios only.
+Production support is restricted to SAP HANA SPS 09 or higher due to the availability of some resource management parameters.
+
+
+
+              App X            App Y
+	       |  |             |  |
+            Schema X          Schema Y 
+         SAP HANA SYSTEM  SAP HANNA SYSTEM
+                       |  |
+		    OS and H/W
+		       |  |
+		      Storage
+
+
+SAP HANA Multitenant Database Containers
+An SAP HANA system installed in multiple-container mode is capable of containing more than one multitenant database containers. Otherwise, it is a single-container system. Single-container systems can be converted to multiple-container systems.
+
+A single database container is called a tenant database.
+
+Backup and restore available by tenant DB.
+
+Tenant Database can be controlled by systemdb or can be controlled idividually also through adminstrator.
+
+
+
+
+                         App X    App Y
+	                 |  |     |  |
+       System Datbase  Schema X  Schema Y 
+		SAP HANA SYSTEM
+                    |  |
+		 OS and H/W
+		    |  |
+		  Storage
+
+Multitenant Database container in mutltihost
+
+System DB	System DB        System DB
+		(Standby)        (Standby)
+
+Tenant DB A-1   Tenant DB a-2    
+Tenant DB B-1 
+Tenant DB C     Tenant DB D
+Host1      	Host2            Host3
+
+so only one system db will be working and other will be standby 
+so if any host will be down those tenant db will be shifted to any standby host.
+
+Cross Database queries between multitenant database containers
+
+Cross-database qureies are supported in SQL engine and calculation engine.
+The tentant db can do communication between each other in same host as well as between diffrent hostalso and with systemdb also.
+
+
+There are two ways we can create a multitenant database system 
+
+1. SAP HANA single database system can be migrated to a multitenant database system but this step is irrevocable.
+
+2 We can create a new multitenant database system.
+
+Backup and Recovery in multitenant conatiner
+
+Local tenant db backup by local db administrator.
+Single tenant db backup by system administrator.
+All tenant db backup by system administrator.
+Single tenant db recover by system administrator.
+All tenant db recover by system administrator.
+
+Creating a tenant database
+Create a database DB0 with SYSTEM user password Manager1:
+CREATE DATABASE DB0 SYSTEM USERPASSWORD Manager1
+
+Create a db DB0 with SYSTEM user password Manager1
+on host A and an additional worker indexserver on Host B:
+CREATE DATABASE DB0 AT LOCATION 'A'ADD'indexserver'AT'B'SYSTEM USER PASSWORD Manager1
+
+Start ans stop tenant database
+ALTER SYSTEM START DATABASE <name>
+ALTER SYSTEM STOP DATABASE <name>
+
+Drop a tenant db
+DROP DATABASE <DATABASE_NAME>
+
